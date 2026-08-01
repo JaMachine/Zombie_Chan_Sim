@@ -78,9 +78,9 @@ function renderScene(sceneId) {
 // 4. ФУНКЦИЯ ОТРИСОВКИ ФИНАЛА (Соцсети + Кнопки перезапуска)
 function renderEndingUI() {
     const links = [
-        { text: 'YouTube', url: 'https://youtube.com', class: 'btn-secondary' },
-        { text: 'Telegram', url: 'https://t.me', class: 'btn-secondary' },
-        { text: 'TikTok', url: 'https://tiktok.com', class: 'btn-secondary' }
+        { text: 'YouTube', url: 'https://www.youtube.com/@Пуська-килла?sub_confirmation=1', class: 'btn-secondary' },
+        { text: 'Telegram', url: 'https://t.me/CAZOROK_BATAKY', class: 'btn-secondary' },
+        { text: 'TikTok', url: 'https://www.tiktok.com/@killa_chan67', class: 'btn-secondary' }
     ];
 
     links.forEach(link => {
