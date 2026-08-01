@@ -1,4 +1,4 @@
-// 1. ХРАНИЛИЩЕ ДАННЫХ СЮЖЕТА (Заполняется из JSON)
+// 1. ХРАНИЛИЩЕ ДАННЫХ СЮЖЕТА
 let storyData = {};
 
 // 2. ССЫЛКИ НА DOM-ЭЛЕМЕНТЫ
@@ -6,27 +6,42 @@ const ui = {
     text: document.getElementById('story-text'),
     image: document.getElementById('scene-image'),
     choices: document.getElementById('choices-container'),
-    audio: document.getElementById('voice-player')
+    audio: document.getElementById('voice-player'),
+    bgm: document.getElementById('bgm-player') // Ссылка на фоновую музыку
 };
 
 // ХЕЛПЕР: АВТОМАТИЧЕСКОЕ ИСПРАВЛЕНИЕ ПУТИ К КАРТИНКЕ
 function formatImagePath(path) {
     if (!path) return '';
-    
     let result = path;
-    
     if (!result.startsWith('images/') && !result.startsWith('/') && !result.startsWith('http')) {
         result = 'images/' + result;
     }
-    
     if (!/\.(webp|png|jpg|jpeg|gif)$/i.test(result)) {
         result += '.webp';
     }
-    
     return result;
 }
 
-// 3. ФУНКЦИЯ РЕНДЕРА КАДРА
+// 3. ФУНКЦИЯ ЗАПУСКА И НАСТРОЙКИ ФОНОВОЙ МУЗЫКИ
+function initBGM() {
+    if (!ui.bgm) return;
+
+    // Громкость фона от 0.0 до 1.0 (0.2 = 20%, чтобы фоновая музыка не перебивала озвучку)
+    ui.bgm.volume = 0.2;
+
+    // Пытаемся запустить автоплеем
+    ui.bgm.play().catch(() => {
+        // Если браузер заблокировал автоплей, включаем музыку при первом клике в любом месте страницы
+        const unlockAudio = () => {
+            ui.bgm.play();
+            document.removeEventListener('click', unlockAudio);
+        };
+        document.addEventListener('click', unlockAudio);
+    });
+}
+
+// 4. ФУНКЦИЯ ОТРИСОВКИ КАДРА
 function renderScene(sceneId) {
     const scene = storyData[sceneId];
 
@@ -46,12 +61,10 @@ function renderScene(sceneId) {
         ui.image.classList.add('hidden');
     }
 
-    // Озвучка
+    // Озвучка кадра (голос / реплика)
     if (scene.audio) {
         ui.audio.src = scene.audio;
-        ui.audio.play().catch(() => {
-            // Игнорируем блокировку автоплея браузером
-        });
+        ui.audio.play().catch(() => {});
     } else {
         ui.audio.pause();
     }
@@ -59,7 +72,7 @@ function renderScene(sceneId) {
     // Очистка кнопок предыдущего кадра
     ui.choices.innerHTML = '';
 
-    // Если это концовка (fail или win)
+    // Если это концовкa
     if (scene.isEnding) {
         renderEndingUI();
         return;
@@ -75,7 +88,7 @@ function renderScene(sceneId) {
     });
 }
 
-// 4. ФУНКЦИЯ ОТРИСОВКИ ФИНАЛА (Соцсети + Кнопки перезапуска)
+// 5. ФУНКЦИЯ ОТРИСОВКИ ФИНАЛА
 function renderEndingUI() {
     const links = [
         { text: 'YouTube', url: 'https://www.youtube.com/@Пуська-килла?sub_confirmation=1', class: 'btn-secondary' },
@@ -107,7 +120,7 @@ function renderEndingUI() {
     ui.choices.appendChild(fuckOffBtn);
 }
 
-// 5. ИНИЦИАЛИЗАЦИЯ И ЗАГРУЗКА JSON
+// 6. ИНИЦИАЛИЗАЦИЯ И ЗАГРУЗКА JSON
 async function initGame() {
     try {
         const response = await fetch('data/story.json');
@@ -117,6 +130,9 @@ async function initGame() {
         }
 
         storyData = await response.json();
+        
+        // Запускаем музыку и первый кадр
+        initBGM();
         renderScene('start');
     } catch (error) {
         console.error('Ошибка инициализации игры:', error);

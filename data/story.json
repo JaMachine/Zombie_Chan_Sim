@@ -2,7 +2,7 @@
   "start": {
     "text": "Ты случайно встретил ее лицом к лицу. Что ты скажешь?",
     "image": "images/start",
-    "audio": "audio/voice-01.opus",
+    "audio": "",
     "choices": [
       { "text": "Привет", "target": "step_001" },
       { "text": "Пока", "target": "fail_001" },
@@ -13,7 +13,7 @@
   "step_001": {
     "text": "Привет) А ты кто?",
     "image": "piccha_000",
-    "audio": "audio/voice-01.opus",
+    "audio": "audio/privet_ti_kto",
     "choices": [
       { "text": "Я рэпер", "target": "fail_003" },
       { "text": "Я нефор", "target": "step_002" },
