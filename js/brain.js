@@ -23,14 +23,17 @@ function formatImagePath(path) {
     return result;
 }
 
-// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО (Автоматически добавляет .mp3)
+// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО (Автоматически добавляет .mp3, ЕСЛИ расширения ещё нет)
 function formatAudioPath(path) {
     if (!path) return '';
     let result = path;
     if (!result.startsWith('audio/') && !result.startsWith('/') && !result.startsWith('http')) {
         result = 'audio/' + result;
     }
-    if (!/\.(mp3|wav|ogg|m4a)$/i.test(result)) {
+    // БАГ БЫЛ ЗДЕСЬ: в списке расширений не было .opus и .webm.
+    // Из-за этого "audio/privet_ti_kto.opus" не проходил проверку и превращался
+    // в "audio/privet_ti_kto.opus.mp3" — несуществующий файл, который просто не грузился.
+    if (!/\.(mp3|wav|ogg|oga|opus|m4a|webm)$/i.test(result)) {
         result += '.mp3';
     }
     return result;
@@ -41,23 +44,54 @@ function initBGM() {
     if (!ui.bgm) return;
 
     ui.bgm.volume = 0.2; // Громкость фоновой музыки (20%)
+    ui.bgm.loop = true;  // Дублируем через JS — на случай, если атрибут loop в HTML не сработает
 
-    // Универсальный разблокировщик аудио при первом клике/касании
-    const unlockAudio = () => {
-        if (ui.bgm.paused) {
-            ui.bgm.play().catch(e => console.log('Фоновая музыка ждет взаимодействия:', e));
-        }
-        document.removeEventListener('click', unlockAudio);
-        document.removeEventListener('keydown', unlockAudio);
+    let unlocked = false;
+
+    // Диагностика: если файл реально не грузится (неверный путь, 404, битый файл и т.д.) —
+    // теперь это будет видно в консоли, а не тихо проглатываться
+    ui.bgm.addEventListener('error', () => {
+        console.error('BGM: ошибка загрузки audio/bgm.mp3 — проверь путь к файлу и сам файл.', ui.bgm.error);
+    });
+
+    const tryPlayBGM = () => {
+        if (unlocked) return;
+        ui.bgm.play()
+            .then(() => {
+                unlocked = true;
+                removeUnlockListeners();
+            })
+            .catch(e => {
+                // Не удалось запустить — слушатели НЕ снимаем, попробуем ещё раз
+                // при следующем клике/нажатии/тапе (раньше слушатели снимались
+                // после первой попытки, даже если она проваливалась — из-за этого
+                // музыка могла не заиграть вообще ни разу за сессию)
+                console.log('Фоновая музыка пока не может запуститься, ждём взаимодействия:', e);
+            });
     };
 
-    document.addEventListener('click', unlockAudio);
-    document.addEventListener('keydown', unlockAudio);
+    function removeUnlockListeners() {
+        document.removeEventListener('click', tryPlayBGM);
+        document.removeEventListener('keydown', tryPlayBGM);
+        document.removeEventListener('touchstart', tryPlayBGM);
+    }
 
-    // Пытаемся запустить сразу
-    ui.bgm.play().catch(() => {
-        // Заблокировано браузером до первого клика (это нормально)
+    // Слушаем разные виды взаимодействия (клик, клавиатура, тап на мобильных)
+    document.addEventListener('click', tryPlayBGM);
+    document.addEventListener('keydown', tryPlayBGM);
+    document.addEventListener('touchstart', tryPlayBGM);
+
+    // На случай, если браузер сам поставит трек на паузу (бывает на мобильных
+    // при сворачивании вкладки/приложения) — пробуем возобновить
+    ui.bgm.addEventListener('pause', () => {
+        if (unlocked && !document.hidden) {
+            ui.bgm.play().catch(() => {});
+        }
     });
+
+    // Пробуем запустить сразу — сработает, если у браузера уже есть разрешение
+    // на автовоспроизведение (например, высокий Media Engagement Index)
+    tryPlayBGM();
 }
 
 // 4. ФУНКЦИЯ ОТРИСОВКИ КАДРА
@@ -146,13 +180,13 @@ function renderEndingUI() {
 async function initGame() {
     try {
         const response = await fetch('data/story.json');
-        
+
         if (!response.ok) {
             throw new Error(`Ошибка загрузки: ${response.status} ${response.statusText}`);
         }
 
         storyData = await response.json();
-        
+
         initBGM();
         renderScene('start');
     } catch (error) {
