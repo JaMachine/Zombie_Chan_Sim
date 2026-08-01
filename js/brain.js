@@ -7,10 +7,10 @@ const ui = {
     image: document.getElementById('scene-image'),
     choices: document.getElementById('choices-container'),
     audio: document.getElementById('voice-player'),
-    bgm: document.getElementById('bgm-player') // Ссылка на фоновую музыку
+    bgm: document.getElementById('bgm-player')
 };
 
-// ХЕЛПЕР: АВТОМАТИЧЕСКОЕ ИСПРАВЛЕНИЕ ПУТИ К КАРТИНКЕ
+// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К КАРТИНКЕ
 function formatImagePath(path) {
     if (!path) return '';
     let result = path;
@@ -23,21 +23,40 @@ function formatImagePath(path) {
     return result;
 }
 
+// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО (Автоматически добавляет .mp3)
+function formatAudioPath(path) {
+    if (!path) return '';
+    let result = path;
+    if (!result.startsWith('audio/') && !result.startsWith('/') && !result.startsWith('http')) {
+        result = 'audio/' + result;
+    }
+    if (!/\.(mp3|wav|ogg|m4a)$/i.test(result)) {
+        result += '.mp3';
+    }
+    return result;
+}
+
 // 3. ФУНКЦИЯ ЗАПУСКА И НАСТРОЙКИ ФОНОВОЙ МУЗЫКИ
 function initBGM() {
     if (!ui.bgm) return;
 
-    // Громкость фона от 0.0 до 1.0 (0.2 = 20%, чтобы фоновая музыка не перебивала озвучку)
-    ui.bgm.volume = 0.2;
+    ui.bgm.volume = 0.2; // Громкость фоновой музыки (20%)
 
-    // Пытаемся запустить автоплеем
+    // Универсальный разблокировщик аудио при первом клике/касании
+    const unlockAudio = () => {
+        if (ui.bgm.paused) {
+            ui.bgm.play().catch(e => console.log('Фоновая музыка ждет взаимодействия:', e));
+        }
+        document.removeEventListener('click', unlockAudio);
+        document.removeEventListener('keydown', unlockAudio);
+    };
+
+    document.addEventListener('click', unlockAudio);
+    document.addEventListener('keydown', unlockAudio);
+
+    // Пытаемся запустить сразу
     ui.bgm.play().catch(() => {
-        // Если браузер заблокировал автоплей, включаем музыку при первом клике в любом месте страницы
-        const unlockAudio = () => {
-            ui.bgm.play();
-            document.removeEventListener('click', unlockAudio);
-        };
-        document.addEventListener('click', unlockAudio);
+        // Заблокировано браузером до первого клика (это нормально)
     });
 }
 
@@ -50,7 +69,7 @@ function renderScene(sceneId) {
         return;
     }
 
-    // Отрисовка текста
+    // Текст
     ui.text.innerText = scene.text;
 
     // Картинка
@@ -61,24 +80,27 @@ function renderScene(sceneId) {
         ui.image.classList.add('hidden');
     }
 
-    // Озвучка кадра (голос / реплика)
+    // Озвучка кадра
     if (scene.audio) {
-        ui.audio.src = scene.audio;
-        ui.audio.play().catch(() => {});
+        ui.audio.src = formatAudioPath(scene.audio);
+        ui.audio.currentTime = 0; // Сброс на начало
+        ui.audio.play().catch(e => {
+            console.log('Озвучка заблокирована или файл не найден:', e);
+        });
     } else {
         ui.audio.pause();
     }
 
-    // Очистка кнопок предыдущего кадра
+    // Очистка кнопок
     ui.choices.innerHTML = '';
 
-    // Если это концовкa
+    // Концовка
     if (scene.isEnding) {
         renderEndingUI();
         return;
     }
 
-    // Генерация кнопок выбора
+    // Генерация кнопок
     scene.choices.forEach(choice => {
         const btn = document.createElement('button');
         btn.className = 'btn';
@@ -131,7 +153,6 @@ async function initGame() {
 
         storyData = await response.json();
         
-        // Запускаем музыку и первый кадр
         initBGM();
         renderScene('start');
     } catch (error) {

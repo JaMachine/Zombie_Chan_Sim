@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новелла</title>
+
+    <!-- ВОТ ЗДЕСЬ МЕНЯЕТСЯ НАЗВАНИЕ ВКЛАДКИ -->
+    <title>Симулятор Зомби чан</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,20 +16,18 @@
 <body>
 
     <div class="game-container">
-        <!-- Обертка для картинки, удерживающая её нижний край на ~42% высоты экрана -->
         <div class="image-wrapper">
             <img id="scene-image" class="hidden" alt="Кадр">
         </div>
 
-        <!-- Текст, прилипающий к картинке -->
         <div id="story-text">Загрузка...</div>
 
-        <!-- Контейнер для динамического числа кнопок -->
         <div id="choices-container"></div>
     </div>
 
-    <audio id="bgm-player" src="audio/bgm.mp3" loop></audio>
-    <audio id="voice-player" class="hidden"></audio>
+    <!-- Аудио плееры -->
+    <audio id="bgm-player" src="audio/bgm.mp3" loop preload="auto"></audio>
+    <audio id="voice-player" preload="auto" class="hidden"></audio>
 
     <script src="js/brain.js"></script>
 </body>
