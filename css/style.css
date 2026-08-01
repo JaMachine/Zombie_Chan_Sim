@@ -7,7 +7,7 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #ffffff; /* Чистый белый фон */
+    background-color: #ffffff; 
     color: #1a1a1e;            /* Темный, глубокий цвет текста (комфортнее чисто черного) */
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
