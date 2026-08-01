@@ -71,7 +71,7 @@ body, html {
     font-weight: 600;
     border: none;
     border-radius: 12px;
-    background-color: #47474e; 
+    background-color: #150000; 
     color: #ffffff;           
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
@@ -170,4 +170,44 @@ body, html {
     100% {
         background-color: rgba(0, 0, 0, 0);
     }
+}
+
+/* Блок соцсетей на финальном экране */
+.social-block {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.social-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
+}
+
+.social-icon-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
 }

@@ -23,7 +23,7 @@ function formatImagePath(path) {
     return result;
 }
 
-// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО (Автоматически добавляет .mp3, если расширение не указано)
+// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО
 function formatAudioPath(path) {
     if (!path) return '';
     let result = path;
@@ -41,9 +41,8 @@ function triggerEffect(effectName) {
     const overlay = document.getElementById('effect-overlay');
     if (!overlay || !effectName) return;
 
-    // Сбрасываем предыдущие анимации
     overlay.className = '';
-    void overlay.offsetWidth; // Принудительный reflow для перезапуска CSS-анимации
+    void overlay.offsetWidth; // Принудительный reflow
 
     if (effectName === 'fire') {
         overlay.classList.add('effect-fire');
@@ -62,12 +61,11 @@ function triggerEffect(effectName) {
 function initBGM() {
     if (!ui.bgm) return;
 
-    ui.bgm.volume = 0.2; // Громкость фоновой музыки (20%)
-    ui.bgm.loop = true;  // Зацикливание
+    ui.bgm.volume = 0.2;
+    ui.bgm.loop = true;
 
     let unlocked = false;
 
-    // Диагностика ошибок загрузки
     ui.bgm.addEventListener('error', () => {
         console.error('BGM: ошибка загрузки аудиофайла — проверь путь и имя файла.', ui.bgm.error);
     });
@@ -90,12 +88,10 @@ function initBGM() {
         document.removeEventListener('touchstart', tryPlayBGM);
     }
 
-    // Слушатели для снятия блокировки автоплея браузером
     document.addEventListener('click', tryPlayBGM);
     document.addEventListener('keydown', tryPlayBGM);
     document.addEventListener('touchstart', tryPlayBGM);
 
-    // Возобновление при возврате на вкладку
     ui.bgm.addEventListener('pause', () => {
         if (unlocked && !document.hidden) {
             ui.bgm.play().catch(() => {});
@@ -109,13 +105,11 @@ function initBGM() {
 function renderScene(sceneId) {
     const scene = storyData[sceneId];
 
-    // 1. Сначала проверяем существование сцены
     if (!scene) {
         console.error(`Кадр "${sceneId}" не найден в storyData!`);
         return;
     }
 
-    // 2. Если у сцены есть эффект — запускаем его
     if (scene.effect) {
         triggerEffect(scene.effect);
     }
@@ -134,7 +128,7 @@ function renderScene(sceneId) {
     // Озвучка кадра
     if (scene.audio) {
         ui.audio.src = formatAudioPath(scene.audio);
-        ui.audio.currentTime = 0; // Сброс на начало
+        ui.audio.currentTime = 0;
         ui.audio.play().catch(e => {
             console.log('Озвучка заблокирована или файл не найден:', e);
         });
@@ -142,7 +136,7 @@ function renderScene(sceneId) {
         ui.audio.pause();
     }
 
-    // Очистка кнопок
+    // Очистка контейнера кнопок
     ui.choices.innerHTML = '';
 
     // Концовка
@@ -151,7 +145,7 @@ function renderScene(sceneId) {
         return;
     }
 
-    // Генерация кнопок
+    // Генерация кнопок вариантов ответа
     scene.choices.forEach(choice => {
         const btn = document.createElement('button');
         btn.className = 'btn';
@@ -161,29 +155,56 @@ function renderScene(sceneId) {
     });
 }
 
-// 5. ФУНКЦИЯ ОТРИСОВКИ ФИНАЛА
+// 5. ФУНКЦИЯ ОТРИСОВКИ ФИНАЛА (Иконки соцсетей + Кнопки)
 function renderEndingUI() {
+    // 1. Создаем общий блок для соцсетей
+    const socialBlock = document.createElement('div');
+    socialBlock.className = 'social-block';
+
+    // Надпись "Ищи ее здесь"
+    const socialTitle = document.createElement('div');
+    socialTitle.className = 'social-title';
+    socialTitle.innerText = 'Ищи ее здесь';
+    socialBlock.appendChild(socialTitle);
+
+    // Горизонтальный контейнер под иконки
+    const socialIcons = document.createElement('div');
+    socialIcons.className = 'social-icons';
+
+    // Список соцсетей (иконки лежат в папке images/)
     const links = [
-        { text: 'YouTube', url: 'https://www.youtube.com/@Пуська-килла?sub_confirmation=1', class: 'btn-secondary' },
-        { text: 'Telegram', url: 'https://t.me/CAZOROK_BATAKY', class: 'btn-secondary' },
-        { text: 'TikTok', url: 'https://www.tiktok.com/@killa_chan67', class: 'btn-secondary' }
+        { name: 'YouTube', url: 'https://www.youtube.com/@Пуська-килла?sub_confirmation=1', icon: 'images/youtube.webp' },
+        { name: 'Telegram', url: 'https://t.me/CAZOROK_BATAKY', icon: 'images/telegram.webp' },
+        { name: 'TikTok', url: 'https://www.tiktok.com/@killa_chan67', icon: 'images/tiktok.webp' }
     ];
 
     links.forEach(link => {
         const a = document.createElement('a');
-        a.className = `btn ${link.class}`;
-        a.innerText = link.text;
         a.href = link.url;
         a.target = '_blank';
-        ui.choices.appendChild(a);
+        a.title = link.name;
+        a.className = 'social-link';
+
+        const img = document.createElement('img');
+        img.src = link.icon;
+        img.alt = link.name;
+        img.className = 'social-icon-img';
+
+        a.appendChild(img);
+        socialIcons.appendChild(a);
     });
 
+    socialBlock.appendChild(socialIcons);
+    ui.choices.appendChild(socialBlock);
+
+    // 2. Кнопка "Начать заново"
     const restartBtn = document.createElement('button');
     restartBtn.className = 'btn';
     restartBtn.innerText = 'Начать заново';
     restartBtn.addEventListener('click', () => renderScene('start'));
     ui.choices.appendChild(restartBtn);
 
+    // 3. Кнопка "Пойти нахер"
     const fuckOffBtn = document.createElement('button');
     fuckOffBtn.className = 'btn btn-danger';
     fuckOffBtn.innerText = 'Пойти нахер';

@@ -123,8 +123,8 @@
   },
   "fail_001": {
     "text": "Девушка ушла. Ты лохонулся.",
-    "image": "fail_000",
-    "audio": "ege",
+    "image": "",
+    "audio": "audio/ege.opus",
     "isEnding": true
   },
   "fail_002": {
