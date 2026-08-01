@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Chan Sim</title>
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Подключение скрипта логики -->
+    <script src="js/brain.js" defer></script>
+</head>
+<body>
+
+    <main class="game-container">
+        <!-- Блок для отображения картинок -->
+        <div class="image-wrapper">
+            <img id="scene-image" src="" alt="Игровой кадр" class="hidden">
+        </div>
+
+        <!-- Текстовый блок сюжета -->
+        <div class="story-box">
+            <p id="story-text">Загрузка...</p>
+        </div>
+
+        <!-- Контейнер для кнопок выбора -->
+        <div id="choices-container" class="choices-box"></div>
+
+        <!-- Плеер для озвучки -->
+        <audio id="voice-player" src=""></audio>
+    </main>
+
+</body>
+</html>
