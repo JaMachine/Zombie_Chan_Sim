@@ -13,7 +13,7 @@
   "step_001": {
     "text": "Привет) А ты кто?",
     "image": "piccha_000",
-    "audio": "audio/privet_ti_kto",
+    "audio": "audio/privet_ti_kto.opus",
     "choices": [
       { "text": "Я рэпер", "target": "fail_003" },
       { "text": "Я нефор", "target": "step_002" },
