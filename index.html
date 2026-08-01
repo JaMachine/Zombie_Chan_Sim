@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zombie Chan Sim</title>
-    <!-- Подключение стилей -->
+    <title>Новелла</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Подключение скрипта логики -->
-    <script src="js/brain.js" defer></script>
 </head>
 <body>
 
-    <main class="game-container">
-        <!-- Блок для отображения картинок -->
+    <div class="game-container">
+        <!-- Обертка для картинки, удерживающая её нижний край на ~42% высоты экрана -->
         <div class="image-wrapper">
-            <img id="scene-image" src="" alt="Игровой кадр" class="hidden">
+            <img id="scene-image" class="hidden" alt="Кадр">
         </div>
 
-        <!-- Текстовый блок сюжета -->
-        <div class="story-box">
-            <p id="story-text">Загрузка...</p>
-        </div>
+        <!-- Текст, прилипающий к картинке -->
+        <div id="story-text">Загрузка...</div>
 
-        <!-- Контейнер для кнопок выбора -->
-        <div id="choices-container" class="choices-box"></div>
+        <!-- Контейнер для динамического числа кнопок -->
+        <div id="choices-container"></div>
+    </div>
 
-        <!-- Плеер для озвучки -->
-        <audio id="voice-player" src=""></audio>
-    </main>
+    <!-- Аудио плеер -->
+    <audio id="voice-player" class="hidden"></audio>
 
+    <script src="js/brain.js"></script>
 </body>
 </html>

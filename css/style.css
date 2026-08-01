@@ -4,84 +4,83 @@
     padding: 0;
 }
 
-body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: system-ui, -apple-system, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* Игровой контейнер */
-.game-container {
-    width: 100%;
-    max-width: 480px; /* Удобный размер под вертикальный формат */
-    min-height: 100vh;
-    background-color: #ffffff;
-    color: #111111;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Картинка кадра */
-.image-wrapper {
-    width: 100%;
-    height: 250px;
-    background-color: #eee;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-wrapper img {
+body, html {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: #121214;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
-.hidden {
-    display: none;
-}
-
-/* Текст */
-.story-box {
-    margin: 20px 0;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    text-align: center;
-    flex-grow: 1;
-}
-
-/* Варианты выбора / Кнопки */
-.choices-box {
+/* Главный контейнер игры */
+.game-container {
+    width: 100%;
+    max-width: 480px; /* Ограничение ширины для удобства на ПК и смартфонах */
+    min-height: 100dvh; /* dynamic view height для мобильных браузеров */
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
 }
 
+/* 
+  Обертка картинки: 
+  Фиксируем высоту в 42vh (42% от верха экрана).
+  align-items: flex-end гарантирует, что НИЖНИЙ КРАЙ картинки 
+  всегда находится ровно на этой отметке (на 8% выше центра).
+*/
+.image-wrapper {
+    width: 100%;
+    height: 42vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Прижимает картинку к низу блока */
+}
+
+#scene-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Картинка пропорционально вписывается, не искажаясь */
+    border-radius: 12px;
+}
+
+/* Текст сразу под картинкой */
+#story-text {
+    margin-top: 14px; /* Небольшой отступ от нижнего края картинки */
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-align: center;
+    width: 100%;
+}
+
+/* Контейнер кнопок сразу под текстом */
+#choices-container {
+    margin-top: 18px; /* Отступ от текста */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Автоматический отступ между любым количеством кнопок */
+    padding-bottom: 20px;
+}
+
+/* Стили кнопок */
 .btn {
-    background-color: #0066cc;
-    color: #ffffff;
-    border: none;
-    padding: 14px 20px;
-    border-radius: 6px;
+    width: 100%;
+    padding: 14px 16px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    background-color: #272730;
+    color: #ffffff;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
     text-align: center;
     text-decoration: none;
-}
-
-.btn:hover {
-    background-color: #0052a3;
+    display: block;
+    box-sizing: border-box;
 }
 
 .btn:active {
@@ -89,17 +88,13 @@ body {
 }
 
 .btn-secondary {
-    background-color: #444444;
-}
-
-.btn-secondary:hover {
-    background-color: #222222;
+    background-color: #1e3a5f;
 }
 
 .btn-danger {
-    background-color: #cc0000;
+    background-color: #4a1515;
 }
 
-.btn-danger:hover {
-    background-color: #990000;
+.hidden {
+    display: none !important;
 }
