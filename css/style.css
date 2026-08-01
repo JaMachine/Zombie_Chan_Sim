@@ -25,10 +25,10 @@ body, html {
     align-items: center;
 }
 
-/* Обертка для картинки (нижний край на 42% высоты экрана) */
+
 .image-wrapper {
     width: 100%;
-    height: 42vh;
+    height: 39vh; /* процик высоты */
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -43,8 +43,8 @@ body, html {
 
 /* Текст сюжета */
 #story-text {
-    margin-top: 19px;
-    font-size: 1.15rem;
+    margin-top: 16px;
+    font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.45;
     text-align: center;
@@ -67,7 +67,7 @@ body, html {
     width: 100%;
     padding: 14px 18px;
     font-family: 'Manrope', sans-serif;
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     border: none;
     border-radius: 12px;
