@@ -164,7 +164,7 @@ function renderEndingUI() {
     // Надпись "Ищи ее здесь"
     const socialTitle = document.createElement('div');
     socialTitle.className = 'social-title';
-    socialTitle.innerText = 'Ищи ее здесь';
+    socialTitle.innerText = 'Ищи её здесь:';
     socialBlock.appendChild(socialTitle);
 
     // Горизонтальный контейнер под иконки

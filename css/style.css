@@ -173,17 +173,21 @@ body, html {
 }
 
 /* Блок соцсетей на финальном экране */
+/* ==========================================
+   ОБНОВЛЕННЫЙ БЛОК СОЦСЕТЕЙ (ФИНАЛ)
+   ========================================== */
+
 .social-block {
     width: 100%;
-    margin-bottom: 15px;
+    margin: 15px 0 20px 0;
     text-align: center;
 }
 
 .social-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #ffffff;
+    font-size: 1.25rem;       /* Сделали шрифт чуть крупнее */
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a1a1a;          /* ТЁМНЫЙ ЦВЕТ: теперь текст четко видно на белом фоне! */
     letter-spacing: 0.5px;
 }
 
@@ -191,7 +195,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 25px;               /* Чуть увеличенный отступ между большими иконками */
 }
 
 .social-link {
@@ -202,12 +206,13 @@ body, html {
 }
 
 .social-link:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
     opacity: 0.85;
 }
 
+/* Иконки увеличены в 2 раза (было 44px -> стало 80px) */
 .social-icon-img {
-    width: 44px;
-    height: 44px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
 }
