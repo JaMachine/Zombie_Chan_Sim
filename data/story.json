@@ -24,13 +24,13 @@
   "step_002": {
     "effect": "fire",
     "text": "Няша перевоплотилась в демона пожирающего детей 😈",
-    "image": "fail_000",
+    "image": "larp",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_003" },
-      { "text": "Вариант 2", "target": "fail_001" },
-      { "text": "Вариант 3", "target": "fail_002" },
-      { "text": "Вариант 4", "target": "fail_003" }
+      { "text": "Покаяться", "target": "step_003" },
+      { "text": "Убежать", "target": "fail_001" },
+      { "text": "Поучать", "target": "fail_002" },
+      { "text": "Звсмеяться", "target": "fail_003" }
     ]
   },
   "step_003": {
