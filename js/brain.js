@@ -23,20 +23,39 @@ function formatImagePath(path) {
     return result;
 }
 
-// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО (Автоматически добавляет .mp3, ЕСЛИ расширения ещё нет)
+// ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К АУДИО (Автоматически добавляет .mp3, если расширение не указано)
 function formatAudioPath(path) {
     if (!path) return '';
     let result = path;
     if (!result.startsWith('audio/') && !result.startsWith('/') && !result.startsWith('http')) {
         result = 'audio/' + result;
     }
-    // БАГ БЫЛ ЗДЕСЬ: в списке расширений не было .opus и .webm.
-    // Из-за этого "audio/privet_ti_kto.opus" не проходил проверку и превращался
-    // в "audio/privet_ti_kto.opus.mp3" — несуществующий файл, который просто не грузился.
     if (!/\.(mp3|wav|ogg|oga|opus|m4a|webm)$/i.test(result)) {
         result += '.mp3';
     }
     return result;
+}
+
+// ХЕЛПЕР: ВОСПРОИЗВЕДЕНИЕ СПЕЦЭФФЕКТОВ
+function triggerEffect(effectName) {
+    const overlay = document.getElementById('effect-overlay');
+    if (!overlay || !effectName) return;
+
+    // Сбрасываем предыдущие анимации
+    overlay.className = '';
+    void overlay.offsetWidth; // Принудительный reflow для перезапуска CSS-анимации
+
+    if (effectName === 'fire') {
+        overlay.classList.add('effect-fire');
+        setTimeout(() => {
+            overlay.classList.remove('effect-fire');
+        }, 600);
+    } else if (effectName === 'fade') {
+        overlay.classList.add('effect-fade');
+        setTimeout(() => {
+            overlay.classList.remove('effect-fade');
+        }, 600);
+    }
 }
 
 // 3. ФУНКЦИЯ ЗАПУСКА И НАСТРОЙКИ ФОНОВОЙ МУЗЫКИ
@@ -44,14 +63,13 @@ function initBGM() {
     if (!ui.bgm) return;
 
     ui.bgm.volume = 0.2; // Громкость фоновой музыки (20%)
-    ui.bgm.loop = true;  // Дублируем через JS — на случай, если атрибут loop в HTML не сработает
+    ui.bgm.loop = true;  // Зацикливание
 
     let unlocked = false;
 
-    // Диагностика: если файл реально не грузится (неверный путь, 404, битый файл и т.д.) —
-    // теперь это будет видно в консоли, а не тихо проглатываться
+    // Диагностика ошибок загрузки
     ui.bgm.addEventListener('error', () => {
-        console.error('BGM: ошибка загрузки audio/bgm.mp3 — проверь путь к файлу и сам файл.', ui.bgm.error);
+        console.error('BGM: ошибка загрузки аудиофайла — проверь путь и имя файла.', ui.bgm.error);
     });
 
     const tryPlayBGM = () => {
@@ -62,11 +80,7 @@ function initBGM() {
                 removeUnlockListeners();
             })
             .catch(e => {
-                // Не удалось запустить — слушатели НЕ снимаем, попробуем ещё раз
-                // при следующем клике/нажатии/тапе (раньше слушатели снимались
-                // после первой попытки, даже если она проваливалась — из-за этого
-                // музыка могла не заиграть вообще ни разу за сессию)
-                console.log('Фоновая музыка пока не может запуститься, ждём взаимодействия:', e);
+                console.log('Фоновая музыка ждёт взаимодействия:', e);
             });
     };
 
@@ -76,21 +90,18 @@ function initBGM() {
         document.removeEventListener('touchstart', tryPlayBGM);
     }
 
-    // Слушаем разные виды взаимодействия (клик, клавиатура, тап на мобильных)
+    // Слушатели для снятия блокировки автоплея браузером
     document.addEventListener('click', tryPlayBGM);
     document.addEventListener('keydown', tryPlayBGM);
     document.addEventListener('touchstart', tryPlayBGM);
 
-    // На случай, если браузер сам поставит трек на паузу (бывает на мобильных
-    // при сворачивании вкладки/приложения) — пробуем возобновить
+    // Возобновление при возврате на вкладку
     ui.bgm.addEventListener('pause', () => {
         if (unlocked && !document.hidden) {
             ui.bgm.play().catch(() => {});
         }
     });
 
-    // Пробуем запустить сразу — сработает, если у браузера уже есть разрешение
-    // на автовоспроизведение (например, высокий Media Engagement Index)
     tryPlayBGM();
 }
 
@@ -98,9 +109,15 @@ function initBGM() {
 function renderScene(sceneId) {
     const scene = storyData[sceneId];
 
+    // 1. Сначала проверяем существование сцены
     if (!scene) {
         console.error(`Кадр "${sceneId}" не найден в storyData!`);
         return;
+    }
+
+    // 2. Если у сцены есть эффект — запускаем его
+    if (scene.effect) {
+        triggerEffect(scene.effect);
     }
 
     // Текст
