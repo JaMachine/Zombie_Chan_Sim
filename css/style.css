@@ -7,74 +7,72 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #121214;
-    color: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff; /* Чистый белый фон */
+    color: #1a1a1e;            /* Темный, глубокий цвет текста (комфортнее чисто черного) */
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     justify-content: center;
 }
 
-/* Главный контейнер игры */
+/* Главный контейнер */
 .game-container {
     width: 100%;
-    max-width: 480px; /* Ограничение ширины для удобства на ПК и смартфонах */
-    min-height: 100dvh; /* dynamic view height для мобильных браузеров */
+    max-width: 480px;
+    min-height: 100dvh;
     padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 
-  Обертка картинки: 
-  Фиксируем высоту в 42vh (42% от верха экрана).
-  align-items: flex-end гарантирует, что НИЖНИЙ КРАЙ картинки 
-  всегда находится ровно на этой отметке (на 8% выше центра).
-*/
+/* Обертка для картинки (нижний край на 42% высоты экрана) */
 .image-wrapper {
     width: 100%;
     height: 42vh;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Прижимает картинку к низу блока */
+    align-items: flex-end;
 }
 
 #scene-image {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Картинка пропорционально вписывается, не искажаясь */
+    object-fit: contain;
     border-radius: 12px;
 }
 
-/* Текст сразу под картинкой */
+/* Текст сюжета */
 #story-text {
-    margin-top: 14px; /* Небольшой отступ от нижнего края картинки */
-    font-size: 1.1rem;
-    line-height: 1.4;
+    margin-top: 16px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.45;
     text-align: center;
     width: 100%;
+    color: #1a1a1e;
 }
 
-/* Контейнер кнопок сразу под текстом */
+/* Контейнер кнопок */
 #choices-container {
-    margin-top: 18px; /* Отступ от текста */
+    margin-top: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Автоматический отступ между любым количеством кнопок */
-    padding-bottom: 20px;
+    gap: 10px;
+    padding-bottom: 24px;
 }
 
-/* Стили кнопок */
+/* Серые стильные кнопки */
 .btn {
     width: 100%;
-    padding: 14px 16px;
+    padding: 14px 18px;
+    font-family: 'Manrope', sans-serif;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     border: none;
-    border-radius: 10px;
-    background-color: #272730;
-    color: #ffffff;
+    border-radius: 12px;
+    background-color: #2c2c34; 
+    color: #ffffff;           
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
     text-align: center;
@@ -83,16 +81,30 @@ body, html {
     box-sizing: border-box;
 }
 
+/* Эффект при нажатии/наведении */
+.btn:hover {
+    background-color: #3e3e48;
+}
+
 .btn:active {
     transform: scale(0.98);
 }
 
+/* Вспомогательные кнопки финалов */
 .btn-secondary {
-    background-color: #1e3a5f;
+    background-color: #4a5568;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6678;
 }
 
 .btn-danger {
-    background-color: #4a1515;
+    background-color: #9b2c2c;
+}
+
+.btn-danger:hover {
+    background-color: #c53030;
 }
 
 .hidden {
