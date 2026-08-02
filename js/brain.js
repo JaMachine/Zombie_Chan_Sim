@@ -8,7 +8,8 @@ const ui = {
     image: document.getElementById('scene-image'),
     choices: document.getElementById('choices-container'),
     audio: document.getElementById('voice-player'),
-    bgm: document.getElementById('bgm-player')
+    bgm: document.getElementById('bgm-player'),
+    startOverlay: document.getElementById('start-overlay')
 };
 
 // ХЕЛПЕР: ИСПРАВЛЕНИЕ ПУТИ К КАРТИНКЕ
@@ -58,48 +59,41 @@ function triggerEffect(effectName) {
     }
 }
 
-// 3. ФУНКЦИЯ ЗАПУСКА И НАСТРОЙКИ ФОНОВОЙ МУЗЫКИ
+// 3. ФУНКЦИЯ ЗАПУСКА И НАСТРОЙКИ ФОНОВОЙ МУЗЫКИ С ЗАГЛУШКОЙ
 function initBGM() {
     if (!ui.bgm) return;
 
     ui.bgm.volume = 0.2;
     ui.bgm.loop = true;
 
-    let unlocked = false;
-
     ui.bgm.addEventListener('error', () => {
         console.error('BGM: ошибка загрузки аудиофайла — проверь путь и имя файла.', ui.bgm.error);
     });
 
-    const tryPlayBGM = () => {
-        if (unlocked) return;
+    const startGameAction = () => {
         ui.bgm.play()
             .then(() => {
-                unlocked = true;
-                removeUnlockListeners();
+                // Прячем заглушку плавно или сразу
+                if (ui.startOverlay) {
+                    ui.startOverlay.classList.add('hidden');
+                }
+                // Запускаем игру с первой сцены
+                renderScene('start');
             })
             .catch(e => {
-                console.log('Фоновая музыка ждёт взаимодействия:', e);
+                console.log('Не удалось запустить аудио:', e);
+                // Даже если автоплей заблокирован браузером, всё равно пускаем в игру при клике
+                if (ui.startOverlay) {
+                    ui.startOverlay.classList.add('hidden');
+                }
+                renderScene('start');
             });
     };
 
-    function removeUnlockListeners() {
-        document.removeEventListener('click', tryPlayBGM);
-        document.removeEventListener('keydown', tryPlayBGM);
-        document.removeEventListener('touchstart', tryPlayBGM);
+    // Клик в любую точку экрана по заглушке запускает музыку и игру
+    if (ui.startOverlay) {
+        ui.startOverlay.addEventListener('click', startGameAction, { once: true });
     }
-
-    document.addEventListener('click', tryPlayBGM);
-    document.addEventListener('keydown', tryPlayBGM);
-    document.addEventListener('touchstart', tryPlayBGM);
-
-    ui.bgm.addEventListener('pause', () => {
-        if (unlocked && !document.hidden) {
-            ui.bgm.play().catch(() => {});
-        }
-    });
-
-    tryPlayBGM();
 }
 
 // 4. ФУНКЦИЯ ОТРИСОВКИ КАДРА
@@ -217,19 +211,23 @@ function renderEndingUI() {
     socialBlock.appendChild(socialIcons);
     ui.choices.appendChild(socialBlock);
 
-    // 2. Кнопка "Начать заново"
+    // 2. Кнопка "Начать заново" (без заглушки)
     const restartBtn = document.createElement('button');
     restartBtn.className = 'btn';
     restartBtn.innerText = 'Начать заново';
-    restartBtn.addEventListener('click', () => renderScene('start'));
+    restartBtn.addEventListener('click', () => {
+        // Убеждаемся, что фоновая музыка играет (на случай если была приостановлена)
+        if (ui.bgm) ui.bgm.play().catch(() => {});
+        renderScene('start');
+    });
     ui.choices.appendChild(restartBtn);
 
-    // 3. Кнопка "Пойти нахер"
+    // 3. Кнопка "Пойти нахер" (красно-желтая)
     const fuckOffBtn = document.createElement('button');
     fuckOffBtn.className = 'btn btn-danger';
     fuckOffBtn.innerText = 'Пойти нахер';
     fuckOffBtn.addEventListener('click', () => {
-        window.location.href = 'https://www.google.com/search?q=как+перестать+играть+в+новеллы';
+        window.location.href = 'https://google.com/search?q=пішов+нахуй';
     });
     ui.choices.appendChild(fuckOffBtn);
 }
@@ -245,10 +243,12 @@ async function initGame() {
 
         storyData = await response.json();
 
+        // Запускаем инициализацию музыки (ждёт клика по стартовой заглушке)
         initBGM();
-        renderScene('start');
     } catch (error) {
         console.error('Ошибка инициализации игры:', error);
+        // Если заглушка висит, уберем её и покажем ошибку в тексте
+        if (ui.startOverlay) ui.startOverlay.classList.add('hidden');
         ui.text.innerText = 'Не удалось загрузить данные игры. Убедитесь, что запустили через локальный сервер (Live Server).';
     }
 }
