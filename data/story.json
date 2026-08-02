@@ -28,7 +28,7 @@
     "effect": "fire",
     "text": "Няша превратилась в демона и ща заларпмаксит тя насмерть 😈",
     "image": "larp",
-    "audio": "",
+    "audio": "audio/nisha.opus",
     "choices": [
       { "text": "Бежать прочь", "type": "act", "target": "fail_004" },
       { "text": "Покаяться", "type": "act", "target": "step_006" },
