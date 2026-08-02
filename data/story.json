@@ -53,10 +53,8 @@
     "image": "xd",
     "audio": "audio/xd.opus",
     "choices": [
-      { "text": "Хочу жениться на тебе по традициям казахчкой степи", "type": "say", "target": "step_010" },
-      { "text": "Будешь со мной дружить?", "type": "say", "target": "step_007" },
-      { "text": "Вариант 3", "type": "say", "target": "fail_006" },
-      { "text": "Вариант 4", "type": "say", "target": "fail_007" }
+      { "text": "Хочу жениться на тебе по традициям казахчкой степи", "type": "say", "target": "fail_015" },
+      { "text": "Будешь со мной дружить?", "type": "say", "target": "step_007" }
     ]
   },
   "step_005": {
@@ -206,17 +204,17 @@
     "isEnding": true
   },
     "fail_012": {
-    "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 012...",
+    "speaker": "Девушка",
+    "text": "Ты воняешь. Помойся",
     "image": "fail_000",
-    "audio": "",
+    "audio": "audio/voniaesh.opus",
     "isEnding": true
   },
     "fail_013": {
     "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 013...",
+    "text": "Девушку стошнило от тебя",
     "image": "fail_000",
-    "audio": "",
+    "audio": "audio/dvach.opus",
     "isEnding": true
   },
     "fail_014": {
@@ -224,6 +222,13 @@
     "text": "На вступлении в секту твоя жизнь была принесена в жертву ларпу",
     "image": "larp_finish",
     "audio": "audio/xd.opus",
+    "isEnding": true
+  },
+    "fail_015": {
+    "speaker": "Внутренний голос",
+    "text": "Ты навалил кринжа и девушака ушла. Ты лохонулся.",
+    "image": "fail_000",
+    "audio": "audio/vorotit.opus",
     "isEnding": true
   },
   "win_end": {
