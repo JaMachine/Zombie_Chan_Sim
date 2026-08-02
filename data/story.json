@@ -44,7 +44,7 @@
     "choices": [
       { "text": "Да я тру, честно!", "type": "say", "target": "fail_007" },
       { "text": "Я дэд инсайд, ты не шаришь...", "type": "say", "target": "fail_008" },
-      { "text": "Мне ваще пахеру", "type": "say", "target": "fail_009" }
+      { "text": "Мне ваще пахеру", "type": "say", "target": "fail_010" }
     ]
   },
   "step_004": {
@@ -179,9 +179,9 @@
   },
   "fail_008": {
     "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_008]: Текст для фейла 008...",
+    "text": "Ты не впечатлил девушку и она ушла. Ты лох.",
     "image": "fail_000",
-    "audio": "",
+    "audio": "audio/pozor.opus",
     "isEnding": true
   },
   "fail_009": {
@@ -192,10 +192,10 @@
     "isEnding": true
   },
   "fail_010": {
-    "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 010...",
+    "speaker": "Девушка",
+    "text": "Ты воняешь",
     "image": "fail_000",
-    "audio": "",
+    "audio": "audio/voniaesh.opus",
     "isEnding": true
   },
     "fail_011": {
