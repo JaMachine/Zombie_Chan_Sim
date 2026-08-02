@@ -63,7 +63,7 @@
     "image": "piccha_001",
     "audio": "audio/chto_nado.opus",
     "choices": [
-      { "text": "Ты унижаешь культуру инцелов", "type": "say", "target": "step_016" },
+      { "text": "Ты унижаешь культуру инцелов", "type": "say", "target": "fail_016" },
       { "text": "Ты позерша", "type": "say", "target": "fail_017" },
       { "text": "Ты должна мне дать", "type": "say", "target": "fail_018" }
     ]
