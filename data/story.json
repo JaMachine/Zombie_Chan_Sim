@@ -131,14 +131,14 @@
   "fail_001": {
     "speaker": "Внутренний голос",
     "text": "Девушка ушла. Ты лохонулся.",
-    "image": "",
+    "image": "fail_000",
     "audio": "audio/ege.opus",
     "isEnding": true
   },
   "fail_002": {
     "speaker": "Внутренний голос",
     "text": "Пока ты тупил, девушка ушла. Ты лоханулся.",
-    "image": "",
+    "image": "go",
     "audio": "",
     "isEnding": true
   },
