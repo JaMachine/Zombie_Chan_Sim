@@ -112,25 +112,26 @@ body, html {
     text-decoration: none;
     box-sizing: border-box;
 
-    /* Сетка для выравнивания иконки слева и текста по центру */
-    display: grid;
-    grid-template-columns: 30px 1fr 30px; 
+    /* Возвращаем flex, чтобы текст и иконка были на одной строке */
+    display: flex;
     align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-/* Иконка внутри кнопки прижимается к левому краю */
+/* Иконка абсолютом прижимается к левому краю кнопки с отступом */
 .btn i, 
 .btn svg, 
 .btn span:first-child {
-    justify-self: start;
-    margin-left: 4px;
+    position: absolute;
+    left: 16px;
 }
 
-/* Текст внутри кнопки ровно по центру */
+/* Текст внутри кнопки четко по центру всей кнопки */
 .btn-text, 
 .btn span:not(:first-child) {
-    grid-column: 2;
     text-align: center;
+    width: 100%;
 }
 
 /* Стилизация речи и действий на кнопках */
