@@ -59,14 +59,13 @@
   },
   "step_005": {
     "speaker": "Девушка",
-    "text": "Текст для step_005...",
-    "image": "",
-    "audio": "",
+    "text": "И что?",
+    "image": "piccha_001",
+    "audio": "audio/chto_nado.opus",
     "choices": [
-      { "text": "Вариант 1", "type": "say", "target": "step_006" },
-      { "text": "Вариант 2", "type": "say", "target": "fail_006" },
-      { "text": "Вариант 3", "type": "say", "target": "fail_007" },
-      { "text": "Вариант 4", "type": "say", "target": "fail_008" }
+      { "text": "Ты унижаешь культуру инцелов", "type": "say", "target": "step_006" },
+      { "text": "Ты позерша", "type": "say", "target": "fail_006" },
+      { "text": "Ты должна мне дать", "type": "say", "target": "fail_007" }
     ]
   },
   "step_006": {
@@ -198,9 +197,9 @@
   },
     "fail_011": {
     "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 011...",
-    "image": "fail_000",
-    "audio": "",
+    "text": "Ты кринжанул и девушка ушла.",
+    "image": "go",
+    "audio": "audio/mne_pora.opus",
     "isEnding": true
   },
     "fail_012": {
