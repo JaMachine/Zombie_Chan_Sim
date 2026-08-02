@@ -63,9 +63,9 @@
     "image": "piccha_001",
     "audio": "audio/chto_nado.opus",
     "choices": [
-      { "text": "Ты унижаешь культуру инцелов", "type": "say", "target": "step_006" },
-      { "text": "Ты позерша", "type": "say", "target": "fail_006" },
-      { "text": "Ты должна мне дать", "type": "say", "target": "fail_007" }
+      { "text": "Ты унижаешь культуру инцелов", "type": "say", "target": "step_016" },
+      { "text": "Ты позерша", "type": "say", "target": "fail_017" },
+      { "text": "Ты должна мне дать", "type": "say", "target": "fail_018" }
     ]
   },
   "step_006": {
@@ -227,6 +227,27 @@
     "speaker": "Внутренний голос",
     "text": "Ты навалил кринжа и девушака ушла. Ты лохонулся.",
     "image": "fail_000",
+    "audio": "audio/vorotit.opus",
+    "isEnding": true
+  },
+     "fail_016": {
+    "speaker": "Внутренний голос",
+    "text": "Девушка порофлила с тебя и ушла.",
+    "image": "fail_000",
+    "audio": "audio/istochik.opus",
+    "isEnding": true
+  },
+       "fail_017": {
+    "speaker": "Внутренний голос",
+    "text": "Девушка порофлила с тебя и ушла.",
+    "image": "fail_000",
+    "audio": "audio/eee.opus",
+    "isEnding": true
+  },
+         "fail_018": {
+    "speaker": "Внутренний голос",
+    "text": "Девушку от тебя стошнило",
+    "image": "go",
     "audio": "audio/vorotit.opus",
     "isEnding": true
   },
