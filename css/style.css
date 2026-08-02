@@ -43,22 +43,23 @@ body, html {
 /* Контейнер текста и плашки */
 .text-wrapper {
     width: 100%;
-    margin-top: 16px;
+    margin-top: 9px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Плашка имени персонажа */
+/* Плашка имени персонажа (прямоугольная, слева) */
 .speaker-tag {
     display: inline-block;
     font-size: 0.85rem;
     font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 8px;
+    padding: 4px 12px;
+    border-radius: 3;          /* Прямоугольные углы без скругления */
+    margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    align-self: flex-start;     /* Прижимаем плашку к левому краю */
 }
 
 .tag-girl {
