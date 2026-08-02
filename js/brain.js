@@ -212,10 +212,10 @@ function renderEndingUI() {
     });
     ui.choices.appendChild(restartBtn);
 
-    // Кнопка "Пойти нахер" (с иконками фака по обоим бокам)
+    // Кнопка "Пойти нахер" (текст строго по центру, фак сразу справа от текста)
     const fuckOffBtn = document.createElement('button');
-    fuckOffBtn.className = 'btn btn-danger';
-    fuckOffBtn.innerHTML = `<span>🖕</span><span class="btn-text">Пойти нахер</span><span>🖕</span>`;
+    fuckOffBtn.className = 'btn btn-danger btn-fuck';
+    fuckOffBtn.innerHTML = `<span class="btn-text">Пойти нахер</span><span class="btn-icon-right">🖕</span>`;
     fuckOffBtn.addEventListener('click', () => {
         window.location.href = 'https://google.com/search?q=пішов+нахуй';
     });

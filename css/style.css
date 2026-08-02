@@ -8,7 +8,7 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: #ffffff; 
-    color: #1a1a1e;            /* Темный, глубокий цвет текста */
+    color: #1a1a1e;             /* Темный, глубокий цвет текста */
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     justify-content: center;
@@ -60,7 +60,7 @@ body, html {
     padding: 4px 12px;
     border-radius: 0;
     margin-top: 0;
-    margin-bottom: 8px;              /* Отступ снизу от плашки до текста */
+    margin-bottom: 8px;               /* Отступ снизу от плашки до текста */
     text-transform: uppercase;
     letter-spacing: 0.5px;
     align-self: flex-start;
@@ -84,8 +84,8 @@ body, html {
     text-align: left;
     width: 100%;
     color: #1a1a1e;
-    padding-left: 10px;              /* Небольшой отступ слева */
-    padding-right: 10px;             /* Небольшой отступ справа */
+    padding-left: 10px;               /* Небольшой отступ слева */
+    padding-right: 10px;              /* Небольшой отступ справа */
 }
 
 /* Контейнер кнопок */
@@ -168,6 +168,23 @@ body, html {
 
 .btn-danger:hover {
     background-color: #e60000;
+}
+
+/* Фикс для кнопки «Пойти нахер»: текст строго по центру, фак справа */
+.btn.btn-fuck {
+    justify-content: center;
+    position: relative;
+}
+
+.btn.btn-fuck .btn-text {
+    flex: none;
+    margin-right: 0;
+}
+
+.btn.btn-fuck .btn-icon-right {
+    position: absolute;
+    right: 18px;
+    flex-shrink: 0;
 }
 
 .hidden {
