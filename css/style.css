@@ -113,26 +113,26 @@ body, html {
     text-decoration: none;
     box-sizing: border-box;
 
-    /* Возвращаем flex, чтобы текст и иконка были на одной строке */
+    /* Flex-контейнер для строки кнопки */
     display: flex;
     align-items: center;
-    justify-content: center;
     position: relative;
 }
 
-/* Иконка абсолютом прижимается к левому краю кнопки с отступом */
+/* Иконка фиксируется слева с отступом */
 .btn i, 
 .btn svg, 
 .btn span:first-child {
-    position: absolute;
-    left: 16px;
+    margin-left: 4px;
+    flex-shrink: 0;
 }
 
-/* Текст внутри кнопки четко по центру всей кнопки */
+/* Текст кнопки занимает всё пространство и выравнивается по центру */
 .btn-text, 
 .btn span:not(:first-child) {
+    flex: 1;
     text-align: center;
-    width: 100%;
+    margin-right: 24px; /* Компенсируем ширину иконки, чтобы текст был ровно по центру */
 }
 
 /* Стилизация речи и действий на кнопках */
@@ -223,7 +223,7 @@ body, html {
     border-top: 18px solid transparent;
     border-bottom: 18px solid transparent;
     border-left: 30px solid #ffffff;
-    margin-left: 6px; /* центрируем треугольник визуально */
+    margin-left: 6px;
 }
 
 .start-label {
@@ -246,16 +246,14 @@ body, html {
     pointer-events: none;
     z-index: 99;
     border-radius: inherit;
-    overflow: hidden; /* чтобы искры не вылезали за пределы картинки */
+    overflow: hidden;
 }
 
-/* 1. ЭФФЕКТ "FIRE" (усиленная версия: больше вспышек + искры) */
 .effect-fire {
     animation: fireFlash 0.9s ease-out forwards;
     position: relative;
 }
 
-/* Основная вспышка пламени: больше цветовых пиков и тряски */
 @keyframes fireFlash {
     0% {
         background-color: rgba(255, 0, 0, 0);
@@ -299,7 +297,6 @@ body, html {
     }
 }
 
-/* Слой искр поверх вспышки — множество точек, разлетающихся вверх */
 .effect-fire::before,
 .effect-fire::after {
     content: '';
@@ -311,7 +308,6 @@ body, html {
     animation: sparksRise 0.9s ease-out forwards;
 }
 
-/* Первая волна искр (мельче, чаще) */
 .effect-fire::before {
     background-image:
         radial-gradient(circle, rgba(255,230,140,0.95) 0 2px, transparent 3px),
@@ -329,7 +325,6 @@ body, html {
     animation-duration: 0.9s;
 }
 
-/* Вторая волна искр (крупнее, летят выше и дольше) */
 .effect-fire::after {
     background-image:
         radial-gradient(circle, rgba(255,210,90,0.9) 0 3px, transparent 4px),
@@ -381,7 +376,6 @@ body, html {
     }
 }
 
-/* 2. ЭФФЕКТ "FADE" */
 .effect-fade {
     animation: fadeFlash 0.6s ease-in-out forwards;
 }
