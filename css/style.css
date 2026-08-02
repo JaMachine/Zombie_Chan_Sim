@@ -83,8 +83,8 @@ body, html {
     text-align: left;
     width: 100%;
     color: #1a1a1e;
-    padding-left: 10px;   /* Отступ слева от края под плашкой */
-    padding-right: 10px;  /* Отступ справа для аккуратного переноса */
+    padding-left: 10px;              /* Небольшой отступ слева */
+    padding-right: 10px;             /* Небольшой отступ справа */
 }
 
 /* Контейнер кнопок */
@@ -109,10 +109,28 @@ body, html {
     color: #ffffff;            
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
-    text-align: center;
     text-decoration: none;
-    display: block;
     box-sizing: border-box;
+
+    /* Сетка для выравнивания иконки слева и текста по центру */
+    display: grid;
+    grid-template-columns: 30px 1fr 30px; 
+    align-items: center;
+}
+
+/* Иконка внутри кнопки прижимается к левому краю */
+.btn i, 
+.btn svg, 
+.btn span:first-child {
+    justify-self: start;
+    margin-left: 4px;
+}
+
+/* Текст внутри кнопки ровно по центру */
+.btn-text, 
+.btn span:not(:first-child) {
+    grid-column: 2;
+    text-align: center;
 }
 
 /* Стилизация речи и действий на кнопках */

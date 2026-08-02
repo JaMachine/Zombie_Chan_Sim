@@ -77,7 +77,7 @@
     "image": "larp_sekta",
     "audio": "",
     "choices": [
-      { "text": "Ок", "type": "say", "target": "step_007" },
+      { "text": "Ну ок", "type": "say", "target": "step_007" },
       { "text": "Нее", "type": "say", "target": "fail_009" }
     ]
   },
@@ -172,7 +172,7 @@
   },
   "fail_007": {
     "speaker": "Внутренний голос",
-    "text": "Девушка посмеялась с тебя и ушла. Ты лохонулся.",
+    "text": "Девушка порофлида с тебя и ушла. Ты лохонулся.",
     "image": "fail_000",
     "audio": "audio/pozor.opus",
     "isEnding": true
