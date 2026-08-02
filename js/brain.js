@@ -202,20 +202,20 @@ function renderEndingUI() {
     socialBlock.appendChild(socialIcons);
     ui.choices.appendChild(socialBlock);
 
-    // Кнопка "Начать заново"
+    // Кнопка "Начать заново" (без иконки, текст строго по центру)
     const restartBtn = document.createElement('button');
     restartBtn.className = 'btn';
-    restartBtn.innerHTML = `<span>🔄</span><span class="btn-text">Начать заново</span>`;
+    restartBtn.innerHTML = `<span class="btn-text" style="margin-right: 0;">Начать заново</span>`;
     restartBtn.addEventListener('click', () => {
         if (ui.bgm) ui.bgm.play().catch(() => {});
         renderScene('start');
     });
     ui.choices.appendChild(restartBtn);
 
-    // Кнопка "Пойти нахер" (красно-желтая)
+    // Кнопка "Пойти нахер" (с иконками фака по обоим бокам)
     const fuckOffBtn = document.createElement('button');
     fuckOffBtn.className = 'btn btn-danger';
-    fuckOffBtn.innerHTML = `<span>🚪</span><span class="btn-text">Пойти нахер</span>`;
+    fuckOffBtn.innerHTML = `<span>🖕</span><span class="btn-text">Пойти нахер</span><span>🖕</span>`;
     fuckOffBtn.addEventListener('click', () => {
         window.location.href = 'https://google.com/search?q=пішов+нахуй';
     });
