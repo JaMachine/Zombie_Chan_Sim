@@ -75,7 +75,7 @@
     "speaker": "Девушка",
     "text": "Вступишь в мою секту?",
     "image": "larp_sekta",
-    "audio": "",
+    "audio": "audio/v_sekty.opus",
     "choices": [
       { "text": "Ну ок", "type": "say", "target": "step_007" },
       { "text": "Нее", "type": "say", "target": "fail_009" }
