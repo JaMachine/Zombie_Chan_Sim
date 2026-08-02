@@ -170,14 +170,14 @@
   "fail_007": {
     "speaker": "Внутренний голос",
     "text": "Девушка порофлида с тебя и ушла. Ты лохонулся.",
-    "image": "fail_000",
+    "image": "fail_001",
     "audio": "audio/pozor.opus",
     "isEnding": true
   },
   "fail_008": {
     "speaker": "Внутренний голос",
     "text": "Ты не впечатлил девушку и она ушла. Ты лох.",
-    "image": "fail_000",
+    "image": "fail_001",
     "audio": "audio/pozor.opus",
     "isEnding": true
   },
