@@ -77,8 +77,8 @@
     "image": "larp_sekta",
     "audio": "audio/v_sekty.opus",
     "choices": [
-      { "text": "Ну ок", "type": "say", "target": "step_007" },
-      { "text": "Нее", "type": "say", "target": "fail_014" }
+      { "text": "Ну ок", "type": "say", "target": "fail_014" },
+      { "text": "Нее", "type": "say", "target": "fail_009" }
     ]
   },
   "step_007": {
@@ -223,7 +223,7 @@
     "speaker": "Внутренний голос",
     "text": "На вступлении в секту твоя жизнь была принесена в жертву ларпу",
     "image": "larp_finish",
-    "audio": "audio/hahaha.opus",
+    "audio": "audio/xd.opus",
     "isEnding": true
   },
   "win_end": {
