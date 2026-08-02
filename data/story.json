@@ -78,7 +78,7 @@
     "audio": "audio/v_sekty.opus",
     "choices": [
       { "text": "Ну ок", "type": "say", "target": "step_007" },
-      { "text": "Нее", "type": "say", "target": "fail_009" }
+      { "text": "Нее", "type": "say", "target": "fail_014" }
     ]
   },
   "step_007": {
@@ -153,21 +153,21 @@
     "speaker": "Внутренний голос",
     "text": "Убегая, ты услышал в спину столько ядерной постиронии, что твой мозг сломался и перестал понимать, где реальность, а где рофл. Ты стал овощем, но этого никто не заметил.",
     "image": "larp_finish",
-    "audio": "",
+    "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_005": {
     "speaker": "Внутренний голос",
     "text": "В безнадёжных попытках пробить постиронию своими нравоучениями, твой мозг расплавился.",
     "image": "larp_finish",
-    "audio": "",
+    "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_006": {
     "speaker": "Внутренний голос",
     "text": "Все твои попытки бычить не сработали, а только унизили тебя. Также на тебя был наложен дебафф пожизненного инцельства.",
     "image": "larp_finish",
-    "audio": "",
+    "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_007": {
@@ -186,9 +186,9 @@
   },
   "fail_009": {
     "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_009]: Текст для фейла 009...",
-    "image": "fail_000",
-    "audio": "",
+    "text": "За отказ вступить в секту ты был казнён",
+    "image": "larp_finish",
+    "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_010": {
@@ -196,6 +196,34 @@
     "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 010...",
     "image": "fail_000",
     "audio": "",
+    "isEnding": true
+  },
+    "fail_011": {
+    "speaker": "Внутренний голос",
+    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 011...",
+    "image": "fail_000",
+    "audio": "",
+    "isEnding": true
+  },
+    "fail_012": {
+    "speaker": "Внутренний голос",
+    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 012...",
+    "image": "fail_000",
+    "audio": "",
+    "isEnding": true
+  },
+    "fail_013": {
+    "speaker": "Внутренний голос",
+    "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 013...",
+    "image": "fail_000",
+    "audio": "",
+    "isEnding": true
+  },
+    "fail_014": {
+    "speaker": "Внутренний голос",
+    "text": "На вступлении в секту твоя жизнь была принесена в жертву ларпу",
+    "image": "larp_finish",
+    "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "win_end": {
