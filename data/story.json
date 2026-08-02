@@ -38,24 +38,23 @@
   },
   "step_003": {
     "speaker": "Девушка",
-    "text": "Текст для step_003...",
-    "image": "",
-    "audio": "",
+    "text": "Не похож",
+    "image": "xd",
+    "audio": "audio/nefor.opus",
     "choices": [
-      { "text": "Вариант 1", "type": "say", "target": "step_004" },
-      { "text": "Вариант 2", "type": "say", "target": "fail_004" },
-      { "text": "Вариант 3", "type": "say", "target": "fail_005" },
-      { "text": "Вариант 4", "type": "say", "target": "fail_006" }
+      { "text": "Да я тру, честно!", "type": "say", "target": "fail_007" },
+      { "text": "Я дэд инсайд, ты не шаришь...", "type": "say", "target": "fail_008" },
+      { "text": "Мне ваще пахеру", "type": "say", "target": "fail_009" }
     ]
   },
   "step_004": {
     "speaker": "Девушка",
-    "text": "Текст для step_004...",
-    "image": "",
-    "audio": "",
+    "text": "XD",
+    "image": "xd",
+    "audio": "audio/xd.opus",
     "choices": [
-      { "text": "Вариант 1", "type": "say", "target": "step_005" },
-      { "text": "Вариант 2", "type": "say", "target": "fail_005" },
+      { "text": "Хочу жениться на тебе по традициям казахчкой степи", "type": "say", "target": "step_010" },
+      { "text": "Будешь со мной дружить?", "type": "say", "target": "step_007" },
       { "text": "Вариант 3", "type": "say", "target": "fail_006" },
       { "text": "Вариант 4", "type": "say", "target": "fail_007" }
     ]
@@ -84,14 +83,13 @@
   },
   "step_007": {
     "speaker": "Девушка",
-    "text": "Текст для step_007...",
-    "image": "",
-    "audio": "",
+    "text": "XDDD",
+    "image": "xdd",
+    "audio": "audio/xd.opus",
     "choices": [
-      { "text": "Вариант 1", "type": "say", "target": "step_008" },
-      { "text": "Вариант 2", "type": "say", "target": "fail_008" },
-      { "text": "Вариант 3", "type": "say", "target": "fail_009" },
-      { "text": "Вариант 4", "type": "say", "target": "fail_010" }
+      { "text": "Ты странная", "type": "say", "target": "fail_011" },
+      { "text": "Го в доту!", "type": "say", "target": "fail_012" },
+      { "text": "Ты сидишь на дваче?", "type": "say", "target": "fail_013" }
     ]
   },
   "step_008": {
@@ -174,9 +172,9 @@
   },
   "fail_007": {
     "speaker": "Внутренний голос",
-    "text": "ПРОИГРЫШ [fail_007]: Текст для фейла 007...",
+    "text": "Девушка посмеялась с тебя и ушла. Ты лохонулся.",
     "image": "fail_000",
-    "audio": "",
+    "audio": "audio/pozor.opus",
     "isEnding": true
   },
   "fail_008": {

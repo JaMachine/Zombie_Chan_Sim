@@ -83,6 +83,8 @@ body, html {
     text-align: left;
     width: 100%;
     color: #1a1a1e;
+    padding-left: 10px;   /* Отступ слева от края под плашкой */
+    padding-right: 10px;  /* Отступ справа для аккуратного переноса */
 }
 
 /* Контейнер кнопок */
