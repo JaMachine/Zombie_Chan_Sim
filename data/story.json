@@ -1,6 +1,6 @@
 {
   "start": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Ты случайно встретил её! Что ты скажешь?",
     "image": "images/start",
     "audio": "",
@@ -8,7 +8,7 @@
       { "text": "Привет", "type": "say", "target": "step_001" },
       { "text": "Пока", "type": "say", "target": "fail_001" },
       { "text": "Изыди", "type": "say", "target": "step_002" },
-      { "text": " . . . ", "type": "act", "target": "fail_002" }
+      { "text": " . . . ", "type": "say", "target": "fail_002" }
     ]
   },
   "step_001": {
@@ -24,9 +24,9 @@
     ]
   },
   "step_002": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "effect": "fire",
-    "text": "Няша превратилась в демона и ща заларпмаксит тебя насмерть 😈",
+    "text": "Няша превратилась в демона и ща заларпмаксит тя насмерть 😈",
     "image": "larp",
     "audio": "",
     "choices": [
@@ -74,7 +74,7 @@
   },
   "step_006": {
     "speaker": "Девушка",
-    "text": "Секта",
+    "text": "Вступишь в мою секту?",
     "image": "larp_sekta",
     "audio": "",
     "choices": [
