@@ -8,7 +8,7 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: #ffffff; 
-    color: #1a1a1e;            /* Темный, глубокий цвет текста (комфортнее чисто черного) */
+    color: #1a1a1e;            /* Темный, глубокий цвет текста */
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     justify-content: center;
@@ -25,10 +25,9 @@ body, html {
     align-items: center;
 }
 
-
 .image-wrapper {
     width: 100%;
-    height: 39vh; /* процик высоты */
+    height: 39vh;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -41,9 +40,39 @@ body, html {
     border-radius: 12px;
 }
 
+/* Контейнер текста и плашки */
+.text-wrapper {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Плашка имени персонажа */
+.speaker-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tag-girl {
+    background-color: #ff4081;
+    color: #ffffff;
+}
+
+.tag-voice {
+    background-color: #4a5568;
+    color: #ffffff;
+}
+
 /* Текст сюжета */
 #story-text {
-    margin-top: 16px;
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.45;
@@ -62,7 +91,6 @@ body, html {
     padding-bottom: 24px;
 }
 
-
 .btn {
     width: 100%;
     padding: 14px 18px;
@@ -72,13 +100,22 @@ body, html {
     border: none;
     border-radius: 12px;
     background-color: #150000; 
-    color: #ffffff;           
+    color: #ffffff;            
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.1s, border-left 0.2s;
     text-align: center;
     text-decoration: none;
     display: block;
     box-sizing: border-box;
+}
+
+/* Стилизация речи и действий на кнопках */
+.btn-say {
+    border-left: 6px solid #29b6f6;
+}
+
+.btn-act {
+    border-left: 6px solid #ff9800;
 }
 
 /* Эффект при нажатии/наведении */
@@ -115,19 +152,18 @@ body, html {
    СЛОЙ И АНИМАЦИИ СПЕЦЭФФЕКТОВ
    ========================================== */
 
-/* Прозрачный слой поверх игры для спецэффектов */
 #effect-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* КРИТИЧНО: чтобы оверлей не мешал кликать по кнопкам */
+    pointer-events: none;
     z-index: 99;
     border-radius: inherit;
 }
 
-/* 1. ЭФФЕКТ "FIRE" (Огненная красная вспышка + тряска экрана) */
+/* 1. ЭФФЕКТ "FIRE" */
 .effect-fire {
     animation: fireFlash 0.6s ease-out forwards;
 }
@@ -155,7 +191,7 @@ body, html {
     }
 }
 
-/* 2. ЭФФЕКТ "FADE" (Плавное затемнение экрана при переходе) */
+/* 2. ЭФФЕКТ "FADE" */
 .effect-fade {
     animation: fadeFlash 0.6s ease-in-out forwards;
 }
@@ -172,7 +208,6 @@ body, html {
     }
 }
 
-/* Блок соцсетей на финальном экране */
 /* ==========================================
    ОБНОВЛЕННЫЙ БЛОК СОЦСЕТЕЙ (ФИНАЛ)
    ========================================== */
@@ -184,10 +219,10 @@ body, html {
 }
 
 .social-title {
-    font-size: 1.25rem;       /* Сделали шрифт чуть крупнее */
+    font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #1a1a1a;          /* ТЁМНЫЙ ЦВЕТ: теперь текст четко видно на белом фоне! */
+    color: #1a1a1a;
     letter-spacing: 0.5px;
 }
 
@@ -195,7 +230,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;               /* Чуть увеличенный отступ между большими иконками */
+    gap: 25px;
 }
 
 .social-link {
@@ -210,7 +245,6 @@ body, html {
     opacity: 0.85;
 }
 
-/* Иконки увеличены в 2 раза (было 44px -> стало 80px) */
 .social-icon-img {
     width: 80px;
     height: 80px;

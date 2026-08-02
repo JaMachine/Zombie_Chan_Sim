@@ -3,6 +3,7 @@ let storyData = {};
 
 // 2. ССЫЛКИ НА DOM-ЭЛЕМЕНТЫ
 const ui = {
+    speaker: document.getElementById('speaker-name'),
     text: document.getElementById('story-text'),
     image: document.getElementById('scene-image'),
     choices: document.getElementById('choices-container'),
@@ -114,6 +115,19 @@ function renderScene(sceneId) {
         triggerEffect(scene.effect);
     }
 
+    // Отрисовка плашки спикера
+    if (scene.speaker) {
+        ui.speaker.innerText = scene.speaker;
+        ui.speaker.classList.remove('hidden', 'tag-girl', 'tag-voice');
+        if (scene.speaker === 'Девушка') {
+            ui.speaker.classList.add('tag-girl');
+        } else {
+            ui.speaker.classList.add('tag-voice');
+        }
+    } else {
+        ui.speaker.classList.add('hidden');
+    }
+
     // Текст
     ui.text.innerText = scene.text;
 
@@ -148,8 +162,14 @@ function renderScene(sceneId) {
     // Генерация кнопок вариантов ответа
     scene.choices.forEach(choice => {
         const btn = document.createElement('button');
-        btn.className = 'btn';
-        btn.innerText = choice.text;
+        
+        // Разделяем типы кнопок (речь или действие)
+        const typeClass = choice.type === 'say' ? 'btn-say' : (choice.type === 'act' ? 'btn-act' : '');
+        const icon = choice.type === 'say' ? '💬 ' : (choice.type === 'act' ? '⚡ ' : '');
+        
+        btn.className = `btn ${typeClass}`;
+        btn.innerText = icon + choice.text;
+        
         btn.addEventListener('click', () => renderScene(choice.target));
         ui.choices.appendChild(btn);
     });
@@ -161,7 +181,7 @@ function renderEndingUI() {
     const socialBlock = document.createElement('div');
     socialBlock.className = 'social-block';
 
-    // Надпись "Ищи ее здесь"
+    // Надпись "Ищи её здесь:"
     const socialTitle = document.createElement('div');
     socialTitle.className = 'social-title';
     socialTitle.innerText = 'Ищи её здесь:';
@@ -171,7 +191,7 @@ function renderEndingUI() {
     const socialIcons = document.createElement('div');
     socialIcons.className = 'social-icons';
 
-    // Список соцсетей (иконки лежат в папке images/)
+    // Список соцсетей
     const links = [
         { name: 'YouTube', url: 'https://www.youtube.com/@Пуська-килла?sub_confirmation=1', icon: 'images/youtube.webp' },
         { name: 'Telegram', url: 'https://t.me/CAZOROK_BATAKY', icon: 'images/telegram.webp' },

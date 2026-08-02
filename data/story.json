@@ -1,187 +1,207 @@
 {
   "start": {
+    "speaker": "Внутренний голос",
     "text": "Ты случайно встретил её! Что ты скажешь?",
     "image": "images/start",
     "audio": "",
     "choices": [
-      { "text": "Привет", "target": "step_001" },
-      { "text": "Пока", "target": "fail_001" },
-      { "text": "Изыди", "target": "step_002" },
-      { "text": " . . . ", "target": "fail_002" }
+      { "text": "Привет", "type": "say", "target": "step_001" },
+      { "text": "Пока", "type": "say", "target": "fail_001" },
+      { "text": "Изыди", "type": "say", "target": "step_002" },
+      { "text": " . . . ", "type": "act", "target": "fail_002" }
     ]
   },
   "step_001": {
+    "speaker": "Девушка",
     "text": "Привет=) А ты кто?",
     "image": "piccha_000",
     "audio": "audio/privet_ti_kto.opus",
     "choices": [
-      { "text": "Я рэпер", "target": "fail_003" },
-      { "text": "Я нефор", "target": "step_003" },
-      { "text": "Я хочу познакомится", "target": "step_004" },
-      { "text": "Я инцел", "target": "step_005" }
+      { "text": "Я рэпер", "type": "say", "target": "fail_003" },
+      { "text": "Я нефор", "type": "say", "target": "step_003" },
+      { "text": "Я хочу познакомится", "type": "say", "target": "step_004" },
+      { "text": "Я инцел", "type": "say", "target": "step_005" }
     ]
   },
   "step_002": {
+    "speaker": "Внутренний голос",
     "effect": "fire",
     "text": "Няша превратилась в демона и ща заларпмаксит тебя насмерть 😈",
     "image": "larp",
     "audio": "",
     "choices": [
-      { "text": "Бежать прочь", "target": "fail_004" },
-      { "text": "Покаяться", "target": "step_006" },
-      { "text": "Умничать", "target": "fail_005" },
-      { "text": "Оскарблять", "target": "fail_006" }
+      { "text": "Бежать прочь", "type": "act", "target": "fail_004" },
+      { "text": "Покаяться", "type": "act", "target": "step_006" },
+      { "text": "Умничать", "type": "act", "target": "fail_005" },
+      { "text": "Оскарблять", "type": "act", "target": "fail_006" }
     ]
   },
   "step_003": {
+    "speaker": "Девушка",
     "text": "Текст для step_003...",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_004" },
-      { "text": "Вариант 2", "target": "fail_004" },
-      { "text": "Вариант 3", "target": "fail_005" },
-      { "text": "Вариант 4", "target": "fail_006" }
+      { "text": "Вариант 1", "type": "say", "target": "step_004" },
+      { "text": "Вариант 2", "type": "say", "target": "fail_004" },
+      { "text": "Вариант 3", "type": "say", "target": "fail_005" },
+      { "text": "Вариант 4", "type": "say", "target": "fail_006" }
     ]
   },
   "step_004": {
+    "speaker": "Девушка",
     "text": "Текст для step_004...",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_005" },
-      { "text": "Вариант 2", "target": "fail_005" },
-      { "text": "Вариант 3", "target": "fail_006" },
-      { "text": "Вариант 4", "target": "fail_007" }
+      { "text": "Вариант 1", "type": "say", "target": "step_005" },
+      { "text": "Вариант 2", "type": "say", "target": "fail_005" },
+      { "text": "Вариант 3", "type": "say", "target": "fail_006" },
+      { "text": "Вариант 4", "type": "say", "target": "fail_007" }
     ]
   },
   "step_005": {
+    "speaker": "Девушка",
     "text": "Текст для step_005...",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_006" },
-      { "text": "Вариант 2", "target": "fail_006" },
-      { "text": "Вариант 3", "target": "fail_007" },
-      { "text": "Вариант 4", "target": "fail_008" }
+      { "text": "Вариант 1", "type": "say", "target": "step_006" },
+      { "text": "Вариант 2", "type": "say", "target": "fail_006" },
+      { "text": "Вариант 3", "type": "say", "target": "fail_007" },
+      { "text": "Вариант 4", "type": "say", "target": "fail_008" }
     ]
   },
   "step_006": {
+    "speaker": "Девушка",
     "text": "Секта",
     "image": "larp_sekta",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_007" },
-      { "text": "Вариант 2", "target": "fail_007" },
-      { "text": "Вариант 3", "target": "fail_008" },
-      { "text": "Вариант 4", "target": "fail_009" }
+      { "text": "Ок", "type": "say", "target": "step_007" },
+      { "text": "Нее", "type": "say", "target": "fail_009" }
     ]
   },
   "step_007": {
+    "speaker": "Девушка",
     "text": "Текст для step_007...",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_008" },
-      { "text": "Вариант 2", "target": "fail_008" },
-      { "text": "Вариант 3", "target": "fail_009" },
-      { "text": "Вариант 4", "target": "fail_010" }
+      { "text": "Вариант 1", "type": "say", "target": "step_008" },
+      { "text": "Вариант 2", "type": "say", "target": "fail_008" },
+      { "text": "Вариант 3", "type": "say", "target": "fail_009" },
+      { "text": "Вариант 4", "type": "say", "target": "fail_010" }
     ]
   },
   "step_008": {
+    "speaker": "Девушка",
     "text": "Текст для step_008...",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_009" },
-      { "text": "Вариант 2", "target": "fail_009" },
-      { "text": "Вариант 3", "target": "fail_010" },
-      { "text": "Вариант 4", "target": "fail_001" }
+      { "text": "Вариант 1", "type": "say", "target": "step_009" },
+      { "text": "Вариант 2", "type": "say", "target": "fail_009" },
+      { "text": "Вариант 3", "type": "say", "target": "fail_010" },
+      { "text": "Вариант 4", "type": "say", "target": "fail_001" }
     ]
   },
   "step_009": {
+    "speaker": "Девушка",
     "text": "Текст для step_009...",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Вариант 1", "target": "step_010" },
-      { "text": "Вариант 2", "target": "fail_010" },
-      { "text": "Вариант 3", "target": "fail_002" },
-      { "text": "Вариант 4", "target": "fail_003" }
+      { "text": "Вариант 1", "type": "say", "target": "step_010" },
+      { "text": "Вариант 2", "type": "say", "target": "fail_010" },
+      { "text": "Вариант 3", "type": "say", "target": "fail_002" },
+      { "text": "Вариант 4", "type": "say", "target": "fail_003" }
     ]
   },
   "step_010": {
+    "speaker": "Внутренний голос",
     "text": "Кульминация! Финальный выбор пред твоим взором.",
     "image": "",
     "audio": "",
     "choices": [
-      { "text": "Идеальный вариант", "target": "win_end" },
-      { "text": "Ошибиться в конце 1", "target": "fail_008" },
-      { "text": "Ошибиться в конце 2", "target": "fail_009" },
-      { "text": "Ошибиться в конце 3", "target": "fail_010" }
+      { "text": "Идеальный вариант", "type": "act", "target": "win_end" },
+      { "text": "Ошибиться в конце 1", "type": "act", "target": "fail_008" },
+      { "text": "Ошибиться в конце 2", "type": "act", "target": "fail_009" },
+      { "text": "Ошибиться в конце 3", "type": "act", "target": "fail_010" }
     ]
   },
   "fail_001": {
+    "speaker": "Внутренний голос",
     "text": "Девушка ушла. Ты лохонулся.",
     "image": "",
     "audio": "audio/ege.opus",
     "isEnding": true
   },
   "fail_002": {
+    "speaker": "Внутренний голос",
     "text": "Пока ты тупил, девушка ушла. Ты лоханулся.",
     "image": "",
     "audio": "",
     "isEnding": true
   },
   "fail_003": {
+    "speaker": "Внутренний голос",
     "text": "ПРОИГРЫШ [fail_003]: Твой рэп никого не впечатлил.",
     "image": "",
     "audio": "",
     "isEnding": true
   },
   "fail_004": {
+    "speaker": "Внутренний голос",
     "text": "Убегая, ты услышал в спину столько ядерной постиронии, что твой мозг сломался и перестал понимать, где реальность, а где рофл. Ты стал овощем, но этого никто не заметил.",
     "image": "larp_finish",
     "audio": "",
     "isEnding": true
   },
   "fail_005": {
+    "speaker": "Внутренний голос",
     "text": "Твой мозг расплавился в безнадёжных попытках пробить постиронию своими нравоучениями.",
     "image": "larp_finish",
     "audio": "",
     "isEnding": true
   },
   "fail_006": {
+    "speaker": "Внутренний голос",
     "text": "Все твои попытки бычить не сработали, а только унизили тебя. Также на тебя был наложен дебафф пожизненного инцельства.",
     "image": "larp_finish",
     "audio": "",
     "isEnding": true
   },
   "fail_007": {
+    "speaker": "Внутренний голос",
     "text": "ПРОИГРЫШ [fail_007]: Текст для фейла 007...",
     "image": "fail_000",
     "audio": "",
     "isEnding": true
   },
   "fail_008": {
+    "speaker": "Внутренний голос",
     "text": "ПРОИГРЫШ [fail_008]: Текст для фейла 008...",
     "image": "fail_000",
     "audio": "",
     "isEnding": true
   },
   "fail_009": {
+    "speaker": "Внутренний голос",
     "text": "ПРОИГРЫШ [fail_009]: Текст для фейла 009...",
     "image": "fail_000",
     "audio": "",
     "isEnding": true
   },
   "fail_010": {
+    "speaker": "Внутренний голос",
     "text": "ПРОИГРЫШ [fail_010]: Текст для фейла 010...",
     "image": "fail_000",
     "audio": "",
     "isEnding": true
   },
   "win_end": {
+    "speaker": "Внутренний голос",
     "text": "ПОБЕДА: Ты прошли игру до конца и получил идеальный финал!",
     "image": "",
     "audio": "",
