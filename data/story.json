@@ -114,7 +114,7 @@
     ]
   },
   "step_010": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Кульминация! Финальный выбор пред твоим взором.",
     "image": "",
     "audio": "",
@@ -126,63 +126,63 @@
     ]
   },
   "fail_001": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Девушка ушла. Ты лохонулся.",
     "image": "fail_000",
     "audio": "audio/ege.opus",
     "isEnding": true
   },
   "fail_002": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Пока ты тупил, девушка ушла. Ты лоханулся.",
     "image": "go",
     "audio": "",
     "isEnding": true
   },
   "fail_003": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Твой рэп никого не впечатлил. Девушка ушла.",
     "image": "fail_000",
     "audio": "audio/ti_reper.opus",
     "isEnding": true
   },
   "fail_004": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Убегая, ты услышал в спину столько ядерной постиронии, что твой мозг сломался и перестал понимать, где реальность, а где рофл. Ты стал овощем, но этого никто не заметил.",
     "image": "larp_finish",
     "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_005": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "В безнадёжных попытках пробить постиронию своими нравоучениями, твой мозг расплавился.",
     "image": "larp_finish",
     "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_006": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Все твои попытки бычить не сработали, а только унизили тебя. Также на тебя был наложен дебафф пожизненного инцельства.",
     "image": "larp_finish",
     "audio": "audio/hahaha.opus",
     "isEnding": true
   },
   "fail_007": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Девушка порофлида с тебя и ушла. Ты лохонулся.",
     "image": "fail_001",
     "audio": "audio/pozor.opus",
     "isEnding": true
   },
   "fail_008": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Ты не впечатлил девушку и она ушла. Ты лох.",
     "image": "fail_001",
     "audio": "audio/pozor.opus",
     "isEnding": true
   },
   "fail_009": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "За отказ вступить в секту ты был казнён",
     "image": "larp_finish",
     "audio": "audio/hahaha.opus",
@@ -196,7 +196,7 @@
     "isEnding": true
   },
     "fail_011": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Ты кринжанул и девушка ушла.",
     "image": "go",
     "audio": "audio/mne_pora.opus",
@@ -210,49 +210,49 @@
     "isEnding": true
   },
     "fail_013": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Девушку стошнило от тебя",
     "image": "fail_000",
     "audio": "audio/dvach.opus",
     "isEnding": true
   },
     "fail_014": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "На вступлении в секту твоя жизнь была принесена в жертву ларпу",
     "image": "larp_finish",
     "audio": "audio/xd.opus",
     "isEnding": true
   },
     "fail_015": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Ты навалил кринжа и девушка ушла. Ты лохонулся.",
     "image": "fail_000",
     "audio": "audio/vorotit.opus",
     "isEnding": true
   },
      "fail_016": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Девушка порофлила с тебя и ушла.",
     "image": "fail_000",
     "audio": "audio/istochik.opus",
     "isEnding": true
   },
        "fail_017": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Девушка порофлила с тебя и ушла.",
     "image": "fail_000",
     "audio": "audio/eee.opus",
     "isEnding": true
   },
          "fail_018": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "Девушку от тебя стошнило",
     "image": "go",
     "audio": "audio/vorotit.opus",
     "isEnding": true
   },
   "win_end": {
-    "speaker": "Внутренний голос",
+    "speaker": "Голоса в голове",
     "text": "ПОБЕДА: Ты прошли игру до конца и получил идеальный финал!",
     "image": "",
     "audio": "",
