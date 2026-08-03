@@ -111,7 +111,10 @@ function renderScene(sceneId) {
         ui.speaker.classList.remove('hidden', 'tag-girl', 'tag-voice');
         if (scene.speaker === 'Девушка') {
             ui.speaker.classList.add('tag-girl');
-        } else {
+        }else if (scene.speaker === 'Демон') {
+            ui.speaker.classList.add('tag-demon');
+        }
+        else {
             ui.speaker.classList.add('tag-voice');
         }
     } else {

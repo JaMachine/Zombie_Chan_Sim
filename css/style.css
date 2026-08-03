@@ -67,13 +67,18 @@ body, html {
 }
 
 .tag-girl {
-    background-color: #ff4081;
-    color: #ffffff;
+    background-color: #ff4b45;
+    color: #fff9b6;
+}
+
+.tag-demon {
+    background-color: #9d0000; /* Темно-красный под демона */
+    color: #ffcc00;
 }
 
 .tag-voice {
-    background-color: #4a5568;
-    color: #ffffff;
+    background-color: #431e1e;
+    color: #fff9b6;
 }
 
 /* Текст сюжета */
